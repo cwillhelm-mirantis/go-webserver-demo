@@ -25,9 +25,9 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }} 
 
     - name: Build and Push image to Docker Hub 
-      uses: docker/build-push-action@c2
+      uses: docker/build-push-action@v2
       with: 
-        context: ./
+        context: ./...
         tags: |
           go-webserver-demo:latest
 
