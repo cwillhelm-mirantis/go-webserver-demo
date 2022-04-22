@@ -24,12 +24,19 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }} 
 
+    - name: Extract metadata (tags, labels) for Docker
+      id: metadata
+      uses: docker/metadata-action@v3
+      with:
+        images: cwillhelm2/go-webserver-demo
+
     - name: Build and Push image to Docker Hub 
       uses: docker/build-push-action@v2
       with: 
      #   context: ./...
         tags: |
-          cwillhelm2/go-webserver-demo:latest
+          cwillhelm2/go-webserver-demo:${{ github.event.head_commit.message }}
+          ${{ steps.metdata.outputs.tags }}
 
         # build on feature branches, only push on main branch 
         push: ${{ github.ref == 'refs/heads/main' }}
