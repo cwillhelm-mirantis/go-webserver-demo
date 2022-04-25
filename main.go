@@ -7,7 +7,7 @@ import (
 )
 
 func sayhello(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, test -- we're on branch 1.0.6")
+    fmt.Fprintf(w, "Hello, test -- we're on branch 1.0.7")
 }
 
 func main() {
