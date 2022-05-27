@@ -1,0 +1,4 @@
+steps:
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'cwillhelm2/go-webserver-demo:cloud-build', '.']
